@@ -1,0 +1,14 @@
+Epixa - Example Application
+
+Copyright 2010 epixa.com - Court Ewing
+License: http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
+Authored by Court Ewing (court@epixa.com)
+
+This is an example application structure using the Epixa library and Zend
+Framework.  Modules are stored directly inside the application directory.  The
+application (and library) rely on autoloading with the conventions outlined
+by the PHP Standards Working Group in PSR-0:
+
+http://groups.google.com/group/php-standards/web/psr-0-final-proposal
+
+This requires PHP 5.3 and assumes all modules will utilize namespaces.
