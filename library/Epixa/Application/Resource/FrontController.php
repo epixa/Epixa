@@ -14,7 +14,7 @@ use Epixa\Controller\Dispatcher;
  * @category  Epixa
  * @package   Application
  * @copyright 2010 epixa.com - Court Ewing
- * @license   http://github.com/epixa/Discuss/blob/master/LICENSE New BSD
+ * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
 class FrontController extends \Zend_Application_Resource_Frontcontroller

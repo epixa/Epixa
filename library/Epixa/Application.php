@@ -13,7 +13,7 @@ require_once 'Zend/Loader/Autoloader.php';
  *
  * @category  Epixa
  * @copyright 2010 epixa.com - Court Ewing
- * @license   http://github.com/epixa/Discuss/blob/master/LICENSE New BSD
+ * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
 class Application extends \Zend_Application

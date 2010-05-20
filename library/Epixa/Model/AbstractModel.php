@@ -12,7 +12,7 @@ namespace Epixa\Model;
  * @category  Epixa
  * @package   Model
  * @copyright 2010 epixa.com - Court Ewing
- * @license   http://github.com/epixa/Discuss/blob/master/LICENSE New BSD
+ * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
 abstract class AbstractModel
