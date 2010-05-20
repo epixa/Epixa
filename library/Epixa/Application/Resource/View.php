@@ -21,7 +21,7 @@ class View extends \Zend_Application_Resource_View
      * Return the configured view object
      *
      * The difference between this and the parent::init is that this does not
-     * isntantiate a viewRenderer object since Epixa specifically disables it.
+     * instantiate a viewRenderer object since Epixa specifically disables it.
      * 
      * @return \Zend_View
      */
