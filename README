@@ -1,3 +1,11 @@
 Epixa Library
 
-A library for generally useful classes and extensions to existing libraries such as Zend Framework and Doctrine 2
+Copyright 2010 epixa.com - Court Ewing
+License: http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
+Authored by Court Ewing (court@epixa.com)
+
+This library contains useful common functionality and extensions to Zend
+Framework that facilitate the widespread use of 5.3 namespaces and an altered
+application directory structure for easier autoloading and maintainability.
+
+This requires PHP 5.3.
