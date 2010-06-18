@@ -6,8 +6,8 @@
 namespace Epixa\Application\Resource;
 
 /**
- * Extension of Zend_Application_Resource_View that does not instantiate
- * viewRenderer
+ * Extension of Zend_Application_Resource_View that changes the path spec for
+ * module view scripts
  *
  * @category  Epixa
  * @package   Application
@@ -18,15 +18,17 @@ namespace Epixa\Application\Resource;
 class View extends \Zend_Application_Resource_View
 {
     /**
-     * Return the configured view object
-     *
-     * The difference between this and the parent::init is that this does not
-     * instantiate a viewRenderer object since Epixa specifically disables it.
+     * {@inheritdoc}
      * 
      * @return \Zend_View
      */
     public function init()
     {
-        return $this->getView();
+        $view = parent::init();
+
+        \Zend_Controller_Action_HelperBroker::getExistingHelper('ViewRenderer')
+            ->setViewBasePathSpec(':moduleDir/View');
+        
+        return $view;
     }
 }

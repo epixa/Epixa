@@ -15,10 +15,10 @@ namespace Core\Controller;
  * @license    http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author     Court Ewing (court@epixa.com)
  */
-class IndexController extends \Zend_Controller_Action
+class IndexController extends \Epixa\Controller\AbstractController
 {
     public function indexAction()
     {
-        die('<p>Core\Controller\IndexController::indexAction()</p>');
+        $this->render('index');
     }
 }

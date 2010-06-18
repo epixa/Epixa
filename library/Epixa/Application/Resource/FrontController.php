@@ -29,7 +29,6 @@ class FrontController extends \Zend_Application_Resource_Frontcontroller
     {
         $dispatcher = new Dispatcher();
         $this->getFrontController()
-            ->setParam('noViewRenderer', true)
             ->setDispatcher($dispatcher)
             ->setModuleControllerDirectoryName('Controller');
 
