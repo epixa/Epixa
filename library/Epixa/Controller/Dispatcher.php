@@ -95,6 +95,30 @@ class Dispatcher extends \Zend_Controller_Dispatcher_Standard
     }
 
     /**
+     * Return the currently set directories for Zend_Controller_Action class
+     * lookup
+     *
+     * If a module is specified, returns just that directory.
+     *
+     * @param  string $module Module name
+     * @return array|string Returns array of all directories by default, single
+     * module directory if module argument provided
+     */
+    public function getControllerDirectory($module = null)
+    {
+        if (null === $module) {
+            return $this->_controllerDirectory;
+        }
+
+        $module = (string) ucfirst($module);
+        if (array_key_exists($module, $this->_controllerDirectory)) {
+            return $this->_controllerDirectory[$module];
+        }
+
+        return null;
+    }
+
+    /**
      * Determine if a given module is valid
      *
      * @param  string $module

@@ -19,7 +19,6 @@ class IndexController extends \Epixa\Controller\AbstractController
 {
     public function indexAction()
     {
-        $this->render('index');
-        die('<p>User\Controller\IndexController::indexAction()</p>');
+        
     }
 }
