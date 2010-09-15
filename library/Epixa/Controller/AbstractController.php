@@ -26,9 +26,9 @@ class AbstractController extends \Zend_Controller_Action
      * object, using the 'views' subdirectory at the same level as the
      * controller directory for the current module as the base directory.
      * It uses this to set the following:
-     * - script path = views/scripts/
-     * - helper path = views/helpers/
-     * - filter path = views/filters/
+     * - script path = View/scripts/
+     * - helper path = View/helpers/
+     * - filter path = View/filters/
      *
      * @return Zend_View_Interface
      * @throws Zend_Controller_Exception if base view directory does not exist

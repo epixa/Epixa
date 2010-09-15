@@ -5,6 +5,8 @@
 
 namespace Core\Controller;
 
+use Core\Form\TestForm;
+
 /**
  * Default controller
  *
@@ -19,6 +21,16 @@ class IndexController extends \Epixa\Controller\AbstractController
 {
     public function indexAction()
     {
-        $this->render('index');
+        $request = $this->getRequest();
+        
+        $form = new TestForm();
+
+        if (!$request->isPost() || !$form->isValid($request->getPost())) {
+            $this->view->form = $form;
+            return;
+        }
+
+        var_dump($form->getValues());
+        die('<p>Core\Controller\IndexController::indexAction</p>');
     }
 }
