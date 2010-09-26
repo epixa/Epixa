@@ -5,7 +5,7 @@
 
 namespace Epixa\Exception;
 
-use RuntimeException;
+use LogicException;
 
 /**
  * @category  Epixa
@@ -14,5 +14,5 @@ use RuntimeException;
  * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
-class NotFoundException extends RuntimeException
+class ConfigException extends LogicException
 {}
