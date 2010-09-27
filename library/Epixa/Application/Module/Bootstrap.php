@@ -50,4 +50,23 @@ class Bootstrap extends BaseModuleBootstrap
             $this->unregisterPluginResource('modules');
         }
     }
+
+    /**
+     * Retrieve module name
+     *
+     * @return string
+     */
+    public function getModuleName()
+    {
+        if (empty($this->_moduleName)) {
+            $class = get_class($this);
+            if (preg_match('/^([a-z][a-z0-9]*)\\\/i', $class, $matches)) {
+                $prefix = $matches[1];
+            } else {
+                $prefix = $class;
+            }
+            $this->_moduleName = $prefix;
+        }
+        return $this->_moduleName;
+    }
 }
