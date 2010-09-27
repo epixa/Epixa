@@ -83,7 +83,7 @@ class Modules extends \Zend_Application_Resource_Modules
         }
 
         $bootstrap->bootstrap();
-        $this->_bootstraps[$module] = $bootstrap;
+        $this->_bootstraps[$name] = $bootstrap;
     }
 
     /**
