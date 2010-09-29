@@ -85,7 +85,8 @@ class BaseForm extends \Zend_Form
 
         $decorators = $this->getDecorators();
         if (empty($decorators)) {
-            $this->addDecorator('FormElements')
+            $this->addDecorator('BasicFormErrors')
+                 ->addDecorator('FormElements')
                  ->addDecorator('Form');
         }
     }
