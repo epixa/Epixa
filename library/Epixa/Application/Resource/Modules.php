@@ -77,7 +77,7 @@ class Modules extends \Zend_Application_Resource_Modules
         }
         
         $bootstrapClass = $this->_getModuleBootstrapClass($name);
-        $bootstrap = new $bootstrapClass($this->getBootstrap()->getApplication());
+        $bootstrap = new $bootstrapClass($this->getBootstrap());
         if (!$bootstrap instanceof \Zend_Application_Bootstrap_Bootstrapper) {
             throw new \LogicException('Module bootstraps must implement Zend_Application_Bootstrap_Bootstrapper');
         }
