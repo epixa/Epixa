@@ -9,9 +9,8 @@ use Doctrine\ORM\EntityManager,
     Epixa\Exception\ConfigException;
 
 /**
- * Abstract model that defines common functionality to access entity properties
- * in a secure and consistent manner.
- *
+ * Abstract for services that have and/or share a doctrine entity manager
+ * 
  * @category  Epixa
  * @package   Service
  * @copyright 2010 epixa.com - Court Ewing
