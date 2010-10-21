@@ -46,6 +46,11 @@ class Modules extends \Zend_Application_Resource_Modules
      */
     public function setupModule($name, $path)
     {
+        // Do not bootstrap the module again
+        if (isset($this->_bootstraps[$name])) {
+            return;
+        }
+        
         $this->_addToAutoloader($name);
         $this->_bootstrapModule($name, $path);
     }

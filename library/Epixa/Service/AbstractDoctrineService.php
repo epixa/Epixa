@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManager,
  * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
-abstract class AbstractDoctrineService
+abstract class AbstractDoctrineService extends AbstractService
 {
     /**
      * @var null|EntityManager
