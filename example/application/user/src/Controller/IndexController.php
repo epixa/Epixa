@@ -19,6 +19,6 @@ class IndexController extends \Epixa\Controller\AbstractController
 {
     public function indexAction()
     {
-        
+        $test = new \User\Model\User();
     }
 }

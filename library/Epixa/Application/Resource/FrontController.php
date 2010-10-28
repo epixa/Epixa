@@ -30,7 +30,7 @@ class FrontController extends \Zend_Application_Resource_Frontcontroller
         $dispatcher = new Dispatcher();
         $this->getFrontController()
             ->setDispatcher($dispatcher)
-            ->setModuleControllerDirectoryName('Controller');
+            ->setModuleControllerDirectoryName('src/Controller');
 
         return parent::init();
     }

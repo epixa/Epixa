@@ -5,6 +5,8 @@
 
 namespace Epixa\Application\Resource;
 
+use Epixa\Loader\ModuleAutoloader;
+
 /**
  * Application resource for setting up module autoloading and running module
  * boostraps.
@@ -17,6 +19,12 @@ namespace Epixa\Application\Resource;
  */
 class Modules extends \Zend_Application_Resource_Modules
 {
+    /**
+     * @var null|ModuleAutoloader
+     */
+    protected $_autoloader = null;
+    
+
     /**
      * Initialize the application's modules
      *
@@ -35,6 +43,8 @@ class Modules extends \Zend_Application_Resource_Modules
             $this->setupModule($name, dirname($path));
         }
 
+        $this->getAutoloader()->register();
+
         return $this->_bootstraps;
     }
 
@@ -51,19 +61,46 @@ class Modules extends \Zend_Application_Resource_Modules
             return;
         }
         
-        $this->_addToAutoloader($name);
+        $this->_addToAutoloader($name, $path);
         $this->_bootstrapModule($name, $path);
     }
 
     /**
-     * Add the given name as a 5.3 namespace to the autoloader
+     * Get the module autoloader
+     * 
+     * @return ModuleAutoloader
+     */
+    public function getAutoloader()
+    {
+        if (null === $this->_autoloader) {
+            $this->setAutoloader(new ModuleAutoloader());
+        }
+
+        return $this->_autoloader;
+    }
+
+    /**
+     * Set the module autoloader
+     *
+     * @param  ModuleAutoloader $autoloader
+     * @return Modules *Fluent interface*
+     */
+    public function setAutoloader(ModuleAutoloader $autoloader)
+    {
+        $this->_autoloader = $autoloader;
+
+        return $this;
+    }
+
+    /**
+     * Add the given module to the module autoloader
      *
      * @param string $name
+     * @param string $path
      */
-    protected function _addToAutoloader($name)
+    protected function _addToAutoloader($name, $path)
     {
-        \Zend_Loader_Autoloader::getInstance()
-            ->registerNamespace(sprintf('%s\\', $this->_formatModuleName($name)));
+        $this->getAutoloader()->addModule($name, $path);
     }
 
     /**

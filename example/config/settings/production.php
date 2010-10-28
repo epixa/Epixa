@@ -14,7 +14,8 @@ return array(
     'resources' => array(
         'frontController' => array(
             'moduleDirectory' => APPLICATION_PATH,
-            'env' => APPLICATION_ENV
+            'env' => APPLICATION_ENV,
+            'prefixDefaultModule' => true
         ),
         'modules' => array(),
         'view' => array()
