@@ -17,7 +17,7 @@ use Epixa\Controller\Dispatcher;
  * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
-class FrontController extends \Zend_Application_Resource_Frontcontroller
+class Frontcontroller extends \Zend_Application_Resource_Frontcontroller
 {
     /**
      * Disable view renderering, change the module controller directory name,
