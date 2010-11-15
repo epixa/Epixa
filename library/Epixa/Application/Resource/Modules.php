@@ -39,11 +39,11 @@ class Modules extends \Zend_Application_Resource_Modules
         $bootstrap->bootstrap('FrontController');
         $front = $bootstrap->getResource('FrontController');
 
+        $this->getAutoloader()->register();
+
         foreach ($front->getControllerDirectory() as $name => $path) {
             $this->setupModule($name, dirname($path));
         }
-
-        $this->getAutoloader()->register();
 
         return $this->_bootstraps;
     }
