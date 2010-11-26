@@ -19,7 +19,7 @@ use Zend_Application_Module_Bootstrap as BaseModuleBootstrap;
  */
 class Bootstrap extends BaseModuleBootstrap
 {
-    public $viewHelperPath = null;
+    protected $viewHelperPath = null;
     
     /**
      * Constructor

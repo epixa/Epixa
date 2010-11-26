@@ -3,12 +3,12 @@
  * Epixa - Example Application
  */
 
-namespace Core;
+namespace User;
 
 use Epixa\Application\Module\Bootstrap as ModuleBootstrap;
 
 /**
- * Bootstrap the core module
+ * Bootstrap the user module
  *
  * @category  Bootstrap
  * @copyright 2010 epixa.com - Court Ewing
