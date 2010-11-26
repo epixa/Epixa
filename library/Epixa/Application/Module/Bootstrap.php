@@ -19,6 +19,8 @@ use Zend_Application_Module_Bootstrap as BaseModuleBootstrap;
  */
 class Bootstrap extends BaseModuleBootstrap
 {
+    public $viewHelperPath = null;
+    
     /**
      * Constructor
      *
@@ -48,6 +50,26 @@ class Bootstrap extends BaseModuleBootstrap
         // ZF-6545: prevent recursive registration of modules
         if ($this->hasPluginResource('modules')) {
             $this->unregisterPluginResource('modules');
+        }
+    }
+
+    /**
+     * Initialize the plugin paths for this module
+     */
+    public function _initPluginPaths()
+    {
+        if ($this->viewHelperPath) {
+            $application = $this->getApplication();
+            $view = $application->bootstrap('View')->getResource('View');
+            $front = $application->bootstrap('FrontController')->getResource('FrontController');
+            
+            $moduleName = $this->getModuleName();
+            
+            $namespace  = $moduleName . '\\View\\Helper\\';
+            $helperPath = $front->getModuleDirectory(strtolower($moduleName)) 
+                        . DIRECTORY_SEPARATOR . $this->viewHelperPath;
+            
+            $view->addHelperPath($helperPath, $namespace);
         }
     }
 
