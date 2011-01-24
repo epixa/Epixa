@@ -15,7 +15,10 @@ return array(
         'frontController' => array(
             'moduleDirectory' => APPLICATION_PATH,
             'env' => APPLICATION_ENV,
-            'prefixDefaultModule' => true
+            'prefixDefaultModule' => true,
+            'actionHelperPaths' => array(
+                'Epixa\\Controller\\Helper\\' => 'Epixa/Controller/Helper'
+            )
         ),
         'modules' => array(),
         'view' => array()

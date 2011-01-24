@@ -5,7 +5,9 @@
 
 namespace Core\Controller;
 
-use Core\Form\TestForm;
+use Core\Form\TestForm,
+    LogicException,
+    Exception;
 
 /**
  * Default controller
@@ -32,5 +34,31 @@ class IndexController extends \Epixa\Controller\AbstractController
 
         var_dump($form->getValues());
         die('<p>Core\Controller\IndexController::indexAction</p>');
+    }
+    
+    public function assertAction()
+    {
+        try {
+            $this->_helper->assert->isset(null);
+        } catch (Exception $e) {
+            echo '<p>Default assertion failure</p>';
+        }
+        
+        try {
+            $this->_helper->assert->isset(null, 'LogicException');
+        } catch (LogicException $e) {
+            echo '<p>LogicException assertion failure</p>';
+        }
+        
+        try {
+            $this->_helper->assert->isset(null, 'LogicException', 'Test Message');
+        } catch (LogicException $e) {
+            printf(
+                '<p>LogicException assertion failure with message: %s   </p>', 
+                $e->getMessage()
+            );
+        }
+        
+        die('<p>Core\Controller\IndexController::assertAction</p>');
     }
 }
