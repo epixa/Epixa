@@ -11,4 +11,5 @@ by the PHP Standards Working Group in PSR-0:
 
 http://groups.google.com/group/php-standards/web/psr-0-final-proposal
 
-This requires PHP 5.3 and assumes all modules will utilize namespaces.
+This requires at least PHP 5.3.3 and assumes all modules will utilize 
+namespaces.
