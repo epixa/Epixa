@@ -119,7 +119,7 @@ class Ajax extends AbstractHelper
     {
         $controller = $this->getActionController();
         $helper = $controller 
-                ? $controller->_helper->$name
+                ? $controller->getHelper($name)
                 : HelperBroker::getStaticHelper($name);
         
         return $helper;
