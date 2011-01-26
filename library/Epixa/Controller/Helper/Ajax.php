@@ -105,6 +105,8 @@ class Ajax extends AbstractHelper
 
         $response = $this->getResponse();
         $response->setHeader('Content-Type', 'application/json', true);
+        
+        echo $data;
     }
     
     /**
