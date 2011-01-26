@@ -6,6 +6,7 @@
 namespace Epixa\Controller\Helper;
 
 use Zend_Controller_Action_Helper_Abstract as AbstractHelper,
+    Zend_Controller_Request_Http as HttpRequest,
     BadMethodCallException,
     Exception;
 
@@ -88,6 +89,17 @@ class Assert extends AbstractHelper
     protected function _assertIsset($value)
     {
         return isset($value);
+    }
+    
+    /**
+     * Determines whether the given request is an ajax request
+     * 
+     * @param  HttpRequest $request
+     * @return boolean
+     */
+    protected function _assertIsAjax(HttpRequest $request)
+    {
+        return $request->isXmlHttpRequest();
     }
     
     /**
