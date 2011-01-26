@@ -8,6 +8,7 @@ namespace Epixa\Controller\Helper;
 use Zend_Controller_Action_Helper_Abstract as AbstractHelper,
     Zend_Controller_Action_HelperBroker as HelperBroker,
     Zend_Form as BaseForm,
+    Zend_Json as JsonEncoder,
     Exception;
     
 
@@ -100,7 +101,7 @@ class Ajax extends AbstractHelper
      */
     public function send(array $data)
     {
-        $data = Zend_Json::encode($data);
+        $data = JsonEncoder::encode($data);
 
         $response = $this->getResponse();
         $response->setHeader('Content-Type', 'application/json', true);
