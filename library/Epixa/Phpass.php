@@ -34,7 +34,7 @@ class Phpass
      */
     public function __construct($iterationCountLog2, $portableHashes = false)
     {
-        $this->itoa64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $this->_itoa64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
         if ($iterationCountLog2 < 4 || $iterationCountLog2 > 31) {
             $iterationCountLog2 = 8;
@@ -138,12 +138,12 @@ class Phpass
         $i = 0;
         do {
             $value = ord($input[$i++]);
-            $output .= $this->itoa64[$value & 0x3f];
+            $output .= $this->_itoa64[$value & 0x3f];
             if ($i < $count) {
                 $value |= ord($input[$i]) << 8;
             }
 
-            $output .= $this->itoa64[($value >> 6) & 0x3f];
+            $output .= $this->_itoa64[($value >> 6) & 0x3f];
             if ($i++ >= $count) {
                 break;
             }
@@ -152,12 +152,12 @@ class Phpass
                 $value |= ord($input[$i]) << 16;
             }
 
-            $output .= $this->itoa64[($value >> 12) & 0x3f];
+            $output .= $this->_itoa64[($value >> 12) & 0x3f];
             if ($i++ >= $count) {
                 break;
             }
             
-            $output .= $this->itoa64[($value >> 18) & 0x3f];
+            $output .= $this->_itoa64[($value >> 18) & 0x3f];
         } while ($i < $count);
 
         return $output;
@@ -176,7 +176,7 @@ class Phpass
             return $output;
         }
 
-        $count_log2 = strpos($this->itoa64, $setting[3]);
+        $count_log2 = strpos($this->_itoa64, $setting[3]);
         if ($count_log2 < 7 || $count_log2 > 30) {
             return $output;
         }
@@ -220,10 +220,10 @@ class Phpass
         $count = (1 << $count_log2) - 1;
 
         $output = '_';
-        $output .= $this->itoa64[$count & 0x3f];
-        $output .= $this->itoa64[($count >> 6) & 0x3f];
-        $output .= $this->itoa64[($count >> 12) & 0x3f];
-        $output .= $this->itoa64[($count >> 18) & 0x3f];
+        $output .= $this->_itoa64[$count & 0x3f];
+        $output .= $this->_itoa64[($count >> 6) & 0x3f];
+        $output .= $this->_itoa64[($count >> 12) & 0x3f];
+        $output .= $this->_itoa64[($count >> 18) & 0x3f];
 
         $output .= $this->_encode64($input, 3);
 
@@ -276,7 +276,7 @@ class Phpass
         $phpVersion = (PHP_VERSION >= '5') ? 5 : 3;
         
         $output = '$P$';
-        $output .= $this->itoa64[min($this->_iterationCountLog2 + $phpVersion, 30)];
+        $output .= $this->_itoa64[min($this->_iterationCountLog2 + $phpVersion, 30)];
         $output .= $this->_encode64($input, 6);
 
         return $output;
