@@ -11,7 +11,7 @@ namespace Epixa\Model;
  *
  * @category  Epixa
  * @package   Model
- * @copyright 2010 epixa.com - Court Ewing
+ * @copyright 2011 epixa.com - Court Ewing
  * @license   http://github.com/epixa/Epixa/blob/master/LICENSE New BSD
  * @author    Court Ewing (court@epixa.com)
  */
@@ -110,5 +110,26 @@ abstract class AbstractModel
             'No method named `%s` exists',
             $name
         ));
+    }
+    
+    /**
+     * Get all of the data from this model as an array
+     * 
+     * This retrieves all properties that are not prefixed with an underscore.
+     * NOTE: This will include non-public properties.
+     * 
+     * @return array
+     */
+    public function toArray()
+    {
+        $data = array();
+        
+        foreach ($this as $key => $value) {
+            if (strpos($key, '_') !== 0) {
+                $data[$key] = $value;
+            }
+        }
+        
+        return $data;
     }
 }
