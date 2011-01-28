@@ -143,10 +143,19 @@ abstract class AbstractModel
      */
     public function populate(array $data)
     {
-        foreach ($this as $key => $value) {
-            if (strpos($key, '_') !== 0 && array_key_exists($key, $data)) {
-                $this->_setProperty($key, $value);
+        foreach ($data as $key => $value) {
+            // ensure we're not trying to set unexposed properties
+            $pos = strpos($key, '_');
+            if ($pos === 0) {
+                continue;
             }
+            
+            // convert underscores to camel case
+            if ($pos !== false) {
+                $key = lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $key))));
+            }
+            
+            $this->_setProperty($key, $value);
         }
         
         return $this;
