@@ -103,6 +103,17 @@ class Assert extends AbstractHelper
     }
     
     /**
+     * Determines whether the given request is a post request
+     * 
+     * @param  HttpRequest $request
+     * @return boolean
+     */
+    protected function _assertIsPost(HttpRequest $request)
+    {
+        return $request->isPost();
+    }
+    
+    /**
      * Formats the given name as an assertion method name
      * 
      * @param  string $name
