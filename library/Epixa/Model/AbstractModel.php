@@ -62,6 +62,9 @@ abstract class AbstractModel
     public function __set($name, $value)
     {
         if ($name[0] != '_') {
+            if ($this->_setProperty($name, $value)) {
+                return;
+            }
             $mutator = 'set'. ucfirst($name);
             if (method_exists($this, $mutator)) {
                 $this->$mutator($value);
@@ -131,5 +134,47 @@ abstract class AbstractModel
         }
         
         return $data;
+    }
+    
+    /**
+     * Set all of the data on this model from the data array
+     * 
+     * @return AbstractModel
+     */
+    public function populate(array $data)
+    {
+        foreach ($this as $key => $value) {
+            if (strpos($key, '_') !== 0 && array_key_exists($key, $data)) {
+                $this->_setProperty($key, $value);
+            }
+        }
+        
+        return $this;
+    }
+    
+    
+    /**
+     * Set the value of the given property
+     * 
+     * Try to use a setter method first.
+     * 
+     * @param  string $name
+     * @param  mixed  $value
+     * @return boolean
+     */
+    protected function _setProperty($name, $value)
+    {
+        $mutator = 'set'. ucfirst($name);
+        if (method_exists($this, $mutator)) {
+            $this->$mutator($value);
+            return true;
+        }
+
+        if (property_exists($this, $name)) {
+            $this->$name = $value;
+            return true;
+        }
+        
+        return false;
     }
 }
