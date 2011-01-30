@@ -63,6 +63,11 @@ class Doctrine extends \Zend_Application_Resource_ResourceAbstract
         if (isset($options['entityPaths'])) {
             $entityPaths = $options['entityPaths'];
         }
+        
+        $logger = null;
+        if (isset($options['loggerClass'])) {
+            $logger = new $options['loggerClass'];
+        }
 
         $config = new Configuration;
         $config->setMetadataCacheImpl($cache);
@@ -73,8 +78,8 @@ class Doctrine extends \Zend_Application_Resource_ResourceAbstract
         $config->setProxyNamespace($proxyNamespace);
         $config->setAutoGenerateProxyClasses($autoGenerateProxies);
         
-        if (isset($options['loggerClass'])) {
-            $config->setSQLLogger($options['loggerClass']);
+        if ($logger) {
+            $config->setSQLLogger($logger);
         }
 
         return EntityManager::create($connection, $config);
