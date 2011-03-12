@@ -29,6 +29,16 @@ abstract class AbstractEmailService
      * @var null|Mailer
      */
     protected static $defaultMailer = null;
+    
+    /**
+     * @var null|View
+     */
+    protected $view = null;
+
+    /**
+     * @var null|View
+     */
+    protected static $defaultView = null;
 
 
     /**
