@@ -81,11 +81,15 @@ class AclManager
      * @param  null|string                     $privilege
      * @return boolean
      */
-    public function isAllowed($identity, ResourceInterface $resource, $privilege = null)
+    public function isAllowed($identity, $resource, $privilege = null)
     {
         $acl = $this->getAcl();
 
-        $resource = $resource->getResourceId();
+        if ($resource instanceof ResourceInterface) {
+            $resource = $resource->getResourceId();
+        } else if (!is_string($resource)) {
+            throw new InvalidArgumentException('Resource must be a string or instance of Zend_Acl_Resource_Interface');
+        }
 
         // if the resource isn't in the acl, then we should add it to the acl
         // and then get all of the roles and rules for it
