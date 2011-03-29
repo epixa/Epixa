@@ -77,7 +77,7 @@ class AclManager
      * Is the specified role allowed to access the given resource
      * 
      * @param  MultiRoles|RoleInterface|string $identity
-     * @param  ResourceInterface               $resource
+     * @param  string|ResourceInterface        $resource
      * @param  null|string                     $privilege
      * @return boolean
      */
